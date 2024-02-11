@@ -1,0 +1,92 @@
+{
+  "nodes": [
+    {
+      "id": "1",
+      "nodetype": "node1",
+      "color": "orange",
+      "name": "PARTICIPANT"
+    },
+    {
+      "id": "2",
+      "nodetype": "node2",
+      "color": "yellow",
+      "name": "PROCESS"
+    },
+    {
+      "id": "3",
+      "nodetype": "node3",
+      "color": "green",
+      "name": "BLOCKCHAIN_NODE"
+    },
+    {
+      "id": "4",
+      "nodetype": "node4",
+      "color": "blue",
+      "name": "BLOCKCHAIN_CHANNEL_NODE"
+    },
+    {
+      "id": "5",
+      "nodetype": "node5",
+      "color": "red",
+      "name": "COMPUTER"
+    },
+    {
+      "id": "6",
+      "nodetype": "node6",
+      "color": "grey",
+      "name": "NETWORK"
+    }
+  ],
+  "nodeAttributes": [
+    {
+      "id": "1",
+      "option": "nodeID"
+    },
+    {
+      "id": "2",
+      "option": "nodeType"
+    },
+    {
+      "id": "3",
+      "option": "architecture"
+    },
+    {
+      "id": "4",
+      "option": "hostName"
+    },
+    {
+      "id": "5",
+      "option": "port"
+    },
+    {
+      "id": "6",
+      "option": "wport"
+    }
+  ],
+  "edgeAttributes": [
+    {
+      "id": "1",
+      "option": "edgeID"
+    },
+    {
+      "id": "2",
+      "option": "nodeType"
+    },
+    {
+      "id": "3",
+      "option": "architecture"
+    },
+    {
+      "id": "4",
+      "option": "hostName"
+    },
+    {
+      "id": "5",
+      "option": "port"
+    },
+    {
+      "id": "6",
+      "option": "wport"
+    }
+  ]
+}

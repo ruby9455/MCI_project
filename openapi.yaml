@@ -1,0 +1,227 @@
+openapi: 3.0.0
+info:
+  title: NVAL API
+  description: API to access functionality and data of NVAL
+  version: 0.1.0
+servers:
+  - url: localhost:8080/api/v1
+paths:
+  /experiments:
+    get:
+      summary: Retrieve all experiment records
+      operationId: experimentsGET
+      responses:
+        "200":
+          description: Experiment records returned in the body.
+          content:
+            application/json: {}
+      x-swagger-router-controller: Default
+    post:
+      summary: Add an experiment record
+      operationId: experimentsPOST
+      requestBody:
+        description: A JSON object representing a BND and a set of required metrics
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/body"
+      responses:
+        "201":
+          description: Experiment added successfully. Experiment ID returned
+        "500":
+          description: Server error.
+      x-swagger-router-controller: Default
+  /experiments/{expID}:
+    get:
+      summary: Retrieve the record of an experiment
+      operationId: experimentsExpIDGET
+      parameters:
+        - name: expID
+          in: path
+          description: ID of the experiment to be retrieved
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Experiment record returned in the body.
+          content:
+            application/json: {}
+        "404":
+          description: Experiment not found.
+      x-swagger-router-controller: Default
+  /experiments/{expID}/status:
+    put:
+      summary: Update the status of experiment, used to start experiments
+      operationId: experimentsExpIDStatusPUT
+      parameters:
+        - name: expID
+          in: path
+          description: ID of the experiment to be retrieved
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        description: Desired status of the experiment
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+      responses:
+        "202":
+          description: Status change accepted
+        "404":
+          description: Experiment not found
+      x-swagger-router-controller: Default
+  /experiments/{expID}/results:
+    get:
+      summary: Retrieve results of an experiment
+      operationId: experimentsExpIDResultsGET
+      parameters:
+        - name: expID
+          in: path
+          description: ID of the experiment to be retrieved
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Experiment result returned in the body.
+          content:
+            application/json: {}
+        "404":
+          description:
+            Results not found. Either experiment ID is not found, or the
+            experiment is not done.
+      x-swagger-router-controller: Default
+  /infrastructures:
+    get:
+      summary: Retrieve all infrastructure records
+      operationId: infrastructuresGET
+      responses:
+        "200":
+          description: Return all the infrastructure records as JSON files
+      x-swagger-router-controller: Default
+    post:
+      summary: Add an infrastructure record
+      operationId: infrastructuresPOST
+      requestBody:
+        description: A JSON object representing an infrastructure to be added
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/infraRecord"
+      responses:
+        "201":
+          description: Experiment added successfully. Experiment ID returned
+        "500":
+          description: Server error.
+      x-swagger-router-controller: Default
+  /infrastructures/{infraID}:
+    get:
+      summary: Retrieve the record of a specific infrastructure
+      operationId: infrastructuresInfraIDGET
+      parameters:
+        - name: infraID
+          in: path
+          description: ID of the infratructure to be retrieved
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Infrastructure record found.
+          content:
+            application/json: {}
+        "404":
+          description: Requested infrastructure not found.
+      x-swagger-router-controller: Default
+  /infrastructures/{infraID}/status:
+    put:
+      summary: Update the status of infrastructure, used to teardown experiments on infrastructure
+      operationId: infrastructuresInfraIDStatusPUT
+      parameters:
+        - name: infraID
+          in: path
+          description: ID of the infrastructure to be udpated
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        description: Desired status of the experiment
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+      responses:
+        "202":
+          description: Status change accepted
+        "404":
+          description: Experiment not found
+        "400":
+          description: Invalid requested status
+      x-swagger-router-controller: Default
+  /deployers:
+    get:
+      summary: Retrieve the list of available deployer modules
+      operationId: deployersGET
+      responses:
+        "200":
+          description: Return all deployer records as JSON files
+          content:
+            application/json: {}
+      x-swagger-router-controller: Default
+  /evaluators:
+    get:
+      summary: Retrieve the list of available evaluator modules
+      operationId: evaluatorsGET
+      responses:
+        "200":
+          description: Return all evaluator records as JSON files
+          content:
+            application/json: {}
+      x-swagger-router-controller: Default
+components:
+  schemas:
+    body:
+      type: object
+      properties:
+        BND:
+          type: object
+        MetricReqs:
+          type: array
+          items:
+            type: object
+    infraRecord:
+      type: object
+      properties:
+        infraID:
+          type: string
+        nodes:
+          type: array
+          items:
+            type: object
+        networks:
+          type: array
+          items:
+            type: object
+        NodeNet:
+          type: array
+          items:
+            type: object

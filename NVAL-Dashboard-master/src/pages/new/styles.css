@@ -1,0 +1,129 @@
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.button-style {
+  color: white;
+  background-color: rgba(38, 117, 245, 0.545);
+  font-size: 10px;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  width: 250px;
+}
+
+.container-style {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.node-style {
+  margin: 10px 0;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.add-attribute-container {
+  position: fixed;
+  top: 130px;
+  right: 10px;
+  min-width: 300px;
+}
+.header {
+  border-radius: 4px;
+  line-height: 30px;
+  height: 30px;
+  font-size: 14px;
+  text-align: center;
+  background-color: rgb(139,181,247);
+  color: #fff;
+}
+
+.attributes-row {
+  margin: 2px 0;
+  display: flex;
+  gap: 2px;
+  justify-content: space-between;
+}
+.delete-btn {
+  border: 1px solid #999;
+  padding:5px 10px ;
+  font-size: 12px;
+  color: #333;
+  border-radius: 4px;
+}
+
+.btn-container {
+  margin-top: 2px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.add-btn {
+  width: 60px;
+  border: 1px solid #999;
+  padding:5px 10px ;
+  font-size: 12px;
+  color: #333;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.save-btn{
+  width: 60px;
+  border: 1px solid #999;
+  padding:5px 10px;
+  font-size: 12px;
+  color: #fff;
+  border-radius: 4px;
+  background-color: rgb(139,181,247);
+  text-align: center;
+}
+
+.tips-bg {
+  width: 210px;
+  position: fixed;
+  left: calc(50% - 105px);
+  background-color: rgb(139,181,247);
+  padding: 5px;
+}
+.tips-container {
+  font-size: 12px;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+.row {
+  display: flex;
+}
+
+.top {
+  border-top: 1px solid #fff;
+}
+
+.left {
+  border-left: 1px solid #fff;
+}
+
+.name {
+  padding: 5px;
+  width: 80px;
+}
+
+.value {
+  padding: 5px 0;
+  width: 139px;
+  padding-left: 5px;
+}
